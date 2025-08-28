@@ -1,8 +1,12 @@
 import pytesseract
 from PIL import Image
 import os
+from dotenv import load_dotenv
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# Load environment variables from .env file
+load_dotenv()
+tesseract_path = os.getenv("TESSERACT_PATH")
+pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
 def extract_text(image_path):
     try:
